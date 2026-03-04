@@ -144,3 +144,4 @@ http-client.private.env.json
 # Self
 build/
 .idea/
+CMakeUserPresets.json
