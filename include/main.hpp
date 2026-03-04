@@ -1,0 +1,4 @@
+#ifndef RESONATE_MAIN_HPP
+#define RESONATE_MAIN_HPP
+
+#endif  // RESONATE_MAIN_HPP
