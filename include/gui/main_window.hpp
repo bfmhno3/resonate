@@ -1,7 +1,3 @@
-//
-// Created by amara on 3/4/2026.
-//
-
 #ifndef RESONATE_MAIN_WINDOW_HPP
 #define RESONATE_MAIN_WINDOW_HPP
 
