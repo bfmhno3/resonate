@@ -1,5 +1,6 @@
 #include "gui/main_window.hpp"
 
+#include <QMouseEvent>
 #include <QWidget>
 
 #include "ui_main_window.h"
@@ -14,4 +15,17 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 MainWindow::~MainWindow() { delete ui; }
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event) {
+  if (event->buttons() & Qt::LeftButton) {
+    move(event->globalPos() - drag_pos_);
+  }
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event) {
+  if (event->button() == Qt::LeftButton) {
+    drag_pos_ = event->globalPos() - frameGeometry().topLeft();
+  }
+}
+
 }  // namespace res

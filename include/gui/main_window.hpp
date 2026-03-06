@@ -1,6 +1,8 @@
 #ifndef RESONATE_MAIN_WINDOW_HPP
 #define RESONATE_MAIN_WINDOW_HPP
 
+#include <QMouseEvent>
+#include <QPoint>
 #include <QWidget>
 
 namespace res {
@@ -14,11 +16,16 @@ class MainWindow : public QWidget {
   Q_OBJECT
 
  public:
-  explicit MainWindow(QWidget *parent = nullptr);
+  explicit MainWindow(QWidget* parent = nullptr);
   ~MainWindow() override;
 
+ protected:
+  void mousePressEvent(QMouseEvent* event) override;
+  void mouseMoveEvent(QMouseEvent* event) override;
+
  private:
-  Ui::MainWindow *ui;
+  Ui::MainWindow* ui;
+  QPoint drag_pos_;
 };
 }  // namespace res
 
