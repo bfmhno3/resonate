@@ -135,7 +135,7 @@ border-radius: 10px;</string>
             </widget>
            </item>
            <item>
-            <widget class="QWidget" name="player_bar" native="true">
+            <widget class="res::PlayerBar" name="player_bar" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -179,7 +179,13 @@ border-radius: 10px;</string>
   <customwidget>
    <class>res::Header</class>
    <extends>QWidget</extends>
-   <header location="global">gui/header.hpp</header>
+   <header>gui/header.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>res::PlayerBar</class>
+   <extends>QWidget</extends>
+   <header>gui/player_bar.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
