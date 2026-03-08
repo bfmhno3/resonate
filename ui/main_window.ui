@@ -87,8 +87,23 @@ border-radius: 10px;</string>
            <string notr="true">background-color: green;</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
-            <widget class="QWidget" name="header" native="true">
+            <widget class="res::Header" name="header" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -98,13 +113,13 @@ border-radius: 10px;</string>
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>50</height>
+               <height>55</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>50</height>
+               <height>55</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -159,6 +174,12 @@ border-radius: 10px;</string>
    <class>res::Sidebar</class>
    <extends>QWidget</extends>
    <header>gui/sidebar.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>res::Header</class>
+   <extends>QWidget</extends>
+   <header location="global">gui/header.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

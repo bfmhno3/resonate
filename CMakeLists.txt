@@ -29,6 +29,9 @@ add_executable(${CMAKE_PROJECT_NAME}
     src/gui/sidebar.cpp
     include/gui/sidebar.hpp
     ui/sidebar.ui
+    src/gui/header.cpp
+    include/gui/header.hpp
+    ui/header.ui
 )
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:GNU>:
