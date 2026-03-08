@@ -35,6 +35,9 @@ add_executable(${CMAKE_PROJECT_NAME}
     src/gui/player_bar.cpp
     include/gui/player_bar.hpp
     ui/player_bar.ui
+    src/gui/main_content.cpp
+    include/gui/main_content.hpp
+    ui/main_content.ui
 )
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:GNU>:

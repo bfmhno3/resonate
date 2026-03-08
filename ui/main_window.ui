@@ -128,7 +128,7 @@ border-radius: 10px;</string>
             </widget>
            </item>
            <item>
-            <widget class="QWidget" name="main_content" native="true">
+            <widget class="res::MainContent" name="main_content" native="true">
              <property name="styleSheet">
               <string notr="true">background-color: #FFFFFF;</string>
              </property>
@@ -186,6 +186,12 @@ border-radius: 10px;</string>
    <class>res::PlayerBar</class>
    <extends>QWidget</extends>
    <header>gui/player_bar.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>res::MainContent</class>
+   <extends>QWidget</extends>
+   <header>gui/main_content.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
