@@ -57,7 +57,7 @@ border-radius: 10px;</string>
          <number>0</number>
         </property>
         <item>
-         <widget class="QWidget" name="sidebar" native="true">
+         <widget class="res::Sidebar" name="sidebar" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -154,6 +154,14 @@ border-radius: 10px;</string>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>res::Sidebar</class>
+   <extends>QWidget</extends>
+   <header>gui/sidebar.hpp</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
