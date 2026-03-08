@@ -1,6 +1,11 @@
 #include "gui/main_window.hpp"
 
+#include <QColor>
+#include <QDebug>
+#include <QGraphicsDropShadowEffect>
 #include <QMouseEvent>
+#include <QPainter>
+#include <QPainterPath>
 #include <QWidget>
 #include <QWindow>
 
@@ -12,7 +17,17 @@ MainWindow::MainWindow(QWidget *parent)
   ui->setupUi(this);
 
   // 移除窗口边框和标题栏
-  setWindowFlags(Qt::FramelessWindowHint);
+  setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
+
+  // 背景透明，让圆角区域真正镂空
+  setAttribute(Qt::WA_TranslucentBackground);
+
+  // 为内容容器添加阴影
+  auto *shadow = new QGraphicsDropShadowEffect(this);
+  shadow->setBlurRadius(kShadowWidth);
+  shadow->setColor(QColor(0, 0, 0, 255));
+  shadow->setOffset(0, 0);  // 居中阴影
+  ui->content->setGraphicsEffect(shadow);
 }
 
 MainWindow::~MainWindow() { delete ui; }
