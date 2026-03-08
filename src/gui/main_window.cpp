@@ -30,11 +30,12 @@ MainWindow::MainWindow(QWidget *parent)
   ui->content->setGraphicsEffect(shadow);
 
   // 连接 Sidebar 的信号
-  connect(ui->sidebar, &res::Sidebar::close_requested, this, &MainWindow::close);
-  connect(ui->sidebar, &res::Sidebar::minimize_requested, this, &MainWindow::showMinimized);
-  connect(ui->sidebar, &res::Sidebar::maximize_requested, this, [this]() {
-    isMaximized() ? showNormal() : showMaximized();
-  });
+  connect(ui->sidebar, &res::Sidebar::close_requested, this,
+          &MainWindow::close);
+  connect(ui->sidebar, &res::Sidebar::minimize_requested, this,
+          &MainWindow::showMinimized);
+  connect(ui->sidebar, &res::Sidebar::maximize_requested, this,
+          [this]() { isMaximized() ? showNormal() : showMaximized(); });
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -62,6 +63,31 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
       windowHandle()->startSystemMove();
     }
   }
+}
+
+void MainWindow::changeEvent(QEvent *event) {
+  if (event->type() == QEvent::WindowStateChange) {
+    if (isMaximized()) {
+      if (layout()) {
+        layout()->setContentsMargins(0, 0, 0, 0);  // 最大化时去除阴影
+      }
+
+      if (ui->content->graphicsEffect()) {
+        ui->content->graphicsEffect()->setEnabled(false);  // 禁用阴影效果
+      }
+    } else {
+      if (layout()) {
+        layout()->setContentsMargins(kShadowWidth, kShadowWidth, kShadowWidth,
+                                     kShadowWidth);  // 恢复阴影
+      }
+
+      if (ui->content->graphicsEffect()) {
+        ui->content->graphicsEffect()->setEnabled(true);  // 开启阴影效果
+      }
+    }
+  }
+
+  QWidget::changeEvent(event);
 }
 
 }  // namespace res

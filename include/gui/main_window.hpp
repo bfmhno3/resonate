@@ -25,6 +25,7 @@ class MainWindow : public QWidget {
  protected:
   void mousePressEvent(QMouseEvent* event) override;
   void mouseMoveEvent(QMouseEvent* event) override;
+  void changeEvent(QEvent* event) override;
 
  private:
   Ui::MainWindow* ui;
