@@ -1,5 +1,8 @@
 #include "gui/sidebar.hpp"
 
+#include <QStringList>
+#include <QListWidgetItem>
+
 #include "ui_Sidebar.h"
 
 namespace res {
@@ -10,6 +13,15 @@ Sidebar::Sidebar(QWidget *parent) : QWidget(parent), ui(new Ui::Sidebar) {
   connect(ui->btn_close, &QPushButton::clicked, this, &Sidebar::handle_close);
   connect(ui->btn_min, &QPushButton::clicked, this, &Sidebar::handle_minimize);
   connect(ui->btn_max, &QPushButton::clicked, this, &Sidebar::handle_maximize);
+
+  QStringList nav_items = {"Recommend", "Likes", "Recent", "Local"};
+
+  for (int i = 0; i < nav_items.size(); ++i) {
+    QListWidgetItem* item = new QListWidgetItem(nav_items.at(i), ui->list_navigation);
+  }
+
+  // 默认选中第一项
+  ui->list_navigation->setCurrentRow(0);
 }
 
 Sidebar::~Sidebar() { delete ui; }
