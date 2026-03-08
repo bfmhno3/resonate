@@ -20,9 +20,15 @@ MainWindow::~MainWindow() { delete ui; }
 void MainWindow::mouseMoveEvent(QMouseEvent *event) {
   // 仅作为回退方案。正常情况下 startSystemMove 运行期间不会进入此函数
   // 只有在 startSystemMove 未被调用或失败时才实行手动移动
-  if (event->buttons() & Qt::LeftButton) {
-    move(event->globalPos() - drag_pos_);
-  }
+  // if (event->buttons() & Qt::LeftButton) {
+  //   qDebug() << "Manual move triggered at position: " << event->globalPos();
+  //   move(event->globalPos() - drag_pos_);
+  // }
+
+  // 弃用 mouseMoveEvent 的手动移动逻辑，完全依赖 startSystemMove 来处理窗口移动
+  // startSystemMove 处理结束后会再次调用 mouseMoveEvent
+  // 会导致再在不同缩放级别的显示器上移动窗口时出现跳动的问题
+  Q_UNUSED(event);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event) {
@@ -33,8 +39,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
     if (windowHandle()) {
       windowHandle()->startSystemMove();
     }
-
-    drag_pos_ = event->globalPos() - frameGeometry().topLeft();
   }
 }
 

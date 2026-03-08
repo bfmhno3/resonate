@@ -25,7 +25,6 @@ class MainWindow : public QWidget {
 
  private:
   Ui::MainWindow* ui;
-  QPoint drag_pos_;
 };
 }  // namespace res
 
