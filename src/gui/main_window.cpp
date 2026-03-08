@@ -28,6 +28,13 @@ MainWindow::MainWindow(QWidget *parent)
   shadow->setColor(QColor(0, 0, 0, 255));
   shadow->setOffset(0, 0);  // 居中阴影
   ui->content->setGraphicsEffect(shadow);
+
+  // 连接 Sidebar 的信号
+  connect(ui->sidebar, &res::Sidebar::close_requested, this, &MainWindow::close);
+  connect(ui->sidebar, &res::Sidebar::minimize_requested, this, &MainWindow::showMinimized);
+  connect(ui->sidebar, &res::Sidebar::maximize_requested, this, [this]() {
+    isMaximized() ? showNormal() : showMaximized();
+  });
 }
 
 MainWindow::~MainWindow() { delete ui; }

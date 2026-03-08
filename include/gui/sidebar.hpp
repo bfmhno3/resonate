@@ -17,6 +17,16 @@ class Sidebar : public QWidget {
   explicit Sidebar(QWidget *parent = nullptr);
   ~Sidebar() override;
 
+ signals:
+  void minimize_requested();
+  void maximize_requested();
+  void close_requested();
+
+ private slots:
+  void handle_minimize();
+  void handle_maximize();
+  void handle_close();
+
  private:
   Ui::Sidebar *ui;
 };
