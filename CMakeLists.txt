@@ -25,6 +25,7 @@ add_executable(${CMAKE_PROJECT_NAME}
     src/gui/main_window.cpp
     include/gui/main_window.hpp
     ui/main_window.ui
+    src/utils/logger.cpp
 )
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:GNU>:
