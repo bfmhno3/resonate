@@ -2,7 +2,6 @@
 #define RESONATE_MAIN_WINDOW_HPP
 
 #include <QMouseEvent>
-#include <QPoint>
 #include <QWidget>
 
 namespace res {
@@ -14,6 +13,9 @@ QT_END_NAMESPACE
 
 class MainWindow : public QWidget {
   Q_OBJECT
+
+ public:
+  static constexpr int kCornerRadius = 10;  // Big Sur 圆角半径
 
  public:
   explicit MainWindow(QWidget* parent = nullptr);

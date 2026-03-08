@@ -1,6 +1,12 @@
 #include "gui/main_window.hpp"
 
+#include <QColor>
+#include <QDebug>
+#include <QGraphicsDropShadowEffect>
 #include <QMouseEvent>
+#include <QPainter>
+#include <QPainterPath>
+#include <QVBoxLayout>
 #include <QWidget>
 #include <QWindow>
 
@@ -9,10 +15,44 @@
 namespace res {
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent), ui(new Ui::MainWindow) {
-  ui->setupUi(this);
+  // ui->setupUi(this);
 
   // 移除窗口边框和标题栏
-  setWindowFlags(Qt::FramelessWindowHint);
+  setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
+
+  // 背景透明，让圆角区域真正镂空
+  setAttribute(Qt::WA_TranslucentBackground);
+
+  // 创建主布局，设置边距以容纳阴影
+  auto *layout = new QVBoxLayout(this);
+  layout->setContentsMargins(20, 20, 20, 20);  // 上下左右各了留 20px 的阴影
+  layout->setSpacing(0);
+
+  // 创建实际的内容容器
+  auto *content_widget = new QWidget(this);
+  content_widget->setObjectName("ContentFrame");  // 便于样式表定位
+
+  // 将 UI 加载到内容容器中，而不是直接加载到 this
+  // 这样所有的按钮、标签都在内容容器内部
+  ui->setupUi(content_widget);
+
+  // 使用样式表设置圆角和背景色
+  // 相比于手动 paintEvent，样式表能更好地处理在空间的圆角裁剪
+  content_widget->setStyleSheet(
+      QString("#ContentFrame { background-color: white; border-radius: %1px; }")
+          .arg(kCornerRadius));
+
+  // 为内容容器添加阴影
+  auto *shadow = new QGraphicsDropShadowEffect(this);
+  shadow->setBlurRadius(20);
+  shadow->setColor(QColor(0, 0, 0, 80));
+  shadow->setOffset(0, 0);  // 居中阴影
+  content_widget->setGraphicsEffect(shadow);
+
+  // 将内容容器加入布局
+  layout->addWidget(content_widget);
+
+  resize(840, 640);
 }
 
 MainWindow::~MainWindow() { delete ui; }
