@@ -103,6 +103,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="page_likes"/>
      <widget class="QWidget" name="page_liked"/>
      <widget class="QWidget" name="page_local"/>
      <widget class="QWidget" name="page_playlist"/>
