@@ -41,6 +41,8 @@ add_executable(${CMAKE_PROJECT_NAME}
     src/gui/sidebar_item.cpp
     include/gui/sidebar_item.hpp
     ui/sidebar_item.ui
+    include/gui/clickable_slider.hpp
+    src/gui/clickable_slider.cpp
 )
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:GNU>:

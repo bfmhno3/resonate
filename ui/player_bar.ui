@@ -468,7 +468,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="horizontalSlider">
+       <widget class="res::ClickableSlider" name="horizontalSlider">
         <property name="styleSheet">
          <string notr="true">QSlider::groove:horizontal {
     border: none;
@@ -635,6 +635,13 @@ QSlider::handle:horizontal:hover {
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>res::ClickableSlider</class>
+   <extends>QSlider</extends>
+   <header>gui/clickable_slider.hpp</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
