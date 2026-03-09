@@ -104,12 +104,25 @@ bool MainWindow::nativeEvent(const QByteArray &event_type, void *message, long *
     MSG *msg = static_cast<MSG *>(message);
     if (msg->message == WM_NCHITTEST) {
       // 获取鼠标坐标
-      int x = GET_X_LPARAM(msg->lParam);
-      int y = GET_Y_LPARAM(msg->lParam);
-      QPoint pt = mapFromGlobal(QPoint(x, y));
+      // int x = GET_X_LPARAM(msg->lParam);
+      // int y = GET_Y_LPARAM(msg->lParam);
+      // 使用逻辑坐标而不是 Windows 返回的绝对坐标
+      // 避免不同缩放显示器下的拖动问题
+      QPoint global_pos = QCursor::pos();
+      QPoint pt = mapFromGlobal(global_pos);
 
-      // 定义边距距离
-      constexpr int border_width = 5;
+      // // 定义边距距离
+      // constexpr int border_width = 5;
+      // 用户看到的 UI 实际上其外圈还有 kShandowWidth 的阴影区域
+      // 需要修正边框判定逻辑，考虑阴影宽度
+      int padding{};
+      if (isMaximized()) {
+        padding = 0;
+      } else {
+        padding = kShadowWidth;
+      }
+      constexpr int tolerance = 5;
+      const int border_width = padding + tolerance;
 
       // 水平测试
       bool left = pt.x() < border_width;
