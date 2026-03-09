@@ -219,15 +219,19 @@ QPushButton:hover { background-color: #E0443E; }</string>
      <property name="styleSheet">
       <string notr="true">QListWidget {
     background-color: transparent;
+    border: none;
     outline: none;
 }
 
+/* This targets the container holding your custom widget */
 QListWidget::item {
-    height: 36px;
+    /* Ensure the container is tall enough for your custom widget if needed, 
+       though setItemWidget usually handles size hints. */
     border-radius: 8px;
     margin-bottom: 4px;
-    color: #333333;
-    padding-left: 10px;
+    /* Remove padding if your custom widget handles its own spacing */
+    padding: 0px; 
+    border: none;
 }
 
 QListWidget::item:hover {
@@ -236,9 +240,12 @@ QListWidget::item:hover {
 
 QListWidget::item:selected {
     background-color: rgba(0, 0, 0, 0.1);
-    color: #000000;
-    font-weight: bold;
-}</string>
+}
+
+/* Optional: If SidebarItem has child labels that need to change color on selection, 
+   you usually handle that in C++ (paintEvent or changing query) or 
+   by targeting the specific child types if they support CSS. */
+</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>

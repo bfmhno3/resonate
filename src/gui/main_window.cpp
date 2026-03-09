@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
           &MainWindow::close);
   connect(ui->sidebar, &res::Sidebar::minimize_requested, this,
           &MainWindow::showMinimized);
-  connect(ui->sidebar, &res::Sidebar::maximize_requested, this,
+  connect(ui->sidebar, &res::Sidebar:: maximize_requested, this,
           [this]() { isMaximized() ? showNormal() : showMaximized(); });
 
   connect(ui->sidebar, &res::Sidebar::page_changed, ui->main_content,

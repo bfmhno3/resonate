@@ -1,12 +1,13 @@
 #include "gui/sidebar.hpp"
 
-#include <QStringList>
 #include <QListWidgetItem>
+#include <QStringList>
 
+#include "gui/sidebar_item.hpp"
 #include "ui_Sidebar.h"
 
 namespace res {
-Sidebar::Sidebar(QWidget *parent) : QWidget(parent), ui(new Ui::Sidebar) {
+Sidebar::Sidebar(QWidget* parent) : QWidget(parent), ui(new Ui::Sidebar) {
   ui->setupUi(this);
 
   // 连接按钮信号
@@ -14,14 +15,17 @@ Sidebar::Sidebar(QWidget *parent) : QWidget(parent), ui(new Ui::Sidebar) {
   connect(ui->btn_min, &QPushButton::clicked, this, &Sidebar::handle_minimize);
   connect(ui->btn_max, &QPushButton::clicked, this, &Sidebar::handle_maximize);
 
-  connect(ui->list_navigation, &QListWidget::currentRowChanged, [this](int index) {
-    emit page_changed(index);
-  });
+  connect(ui->list_navigation, &QListWidget::currentRowChanged,
+          [this](int index) { emit page_changed(index); });
 
   QStringList nav_items = {"Recommend", "Likes", "Recent", "Local"};
 
   for (int i = 0; i < nav_items.size(); ++i) {
-    QListWidgetItem* item = new QListWidgetItem(nav_items.at(i), ui->list_navigation);
+    QListWidgetItem* item = new QListWidgetItem(ui->list_navigation);
+    res::SidebarItem* custom_item = new res::SidebarItem(
+        ui->list_navigation, QString(), nav_items[i], 100 * i);
+    ui->list_navigation->setItemWidget(item, custom_item);;
+    item->setSizeHint(QSize(ui->list_navigation->width(), custom_item->sizeHint().height()));
   }
 
   // 默认选中第一项
@@ -30,16 +34,10 @@ Sidebar::Sidebar(QWidget *parent) : QWidget(parent), ui(new Ui::Sidebar) {
 
 Sidebar::~Sidebar() { delete ui; }
 
-void Sidebar::handle_minimize() {
-  emit minimize_requested();
-}
+void Sidebar::handle_minimize() { emit minimize_requested(); }
 
-void Sidebar::handle_maximize() {
-  emit maximize_requested();
-}
+void Sidebar::handle_maximize() { emit maximize_requested(); }
 
-void Sidebar::handle_close() {
-  emit close_requested();
-}
+void Sidebar::handle_close() { emit close_requested(); }
 
 }  // namespace res
