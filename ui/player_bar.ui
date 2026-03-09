@@ -470,33 +470,47 @@
       <item>
        <widget class="res::ClickableSlider" name="horizontalSlider">
         <property name="styleSheet">
-         <string notr="true">QSlider::groove:horizontal {
+         <string notr="true">/* 1. Remove focus outline */
+QSlider {
+    outline: none;
+}
+
+/* 2. Groove settings */
+QSlider::groove:horizontal {
     border: none;
-    height: 4px; /* 极细的轨道 */
-    background: #E0E0E0;
+    height: 4px;
+    background: #e0e0e0;
     border-radius: 2px;
 }
-/* 划过部分的颜色（通常是主题色或者稍微深一点的灰色） */
+
+/* 3. Sub-page (The filled part of the slider) */
 QSlider::sub-page:horizontal {
-    background-color: #8E8E93;
+    background: #1DB954;
     border-radius: 2px;
 }
-/* 拖动滑块 */
+
+/* 4. Handle core settings (Hidden by default) */
 QSlider::handle:horizontal {
-    background-color: #FFFFFF;
-    border: 1px solid #D1D1D6;
-    width: 12px;
-    height: 12px;
-    margin: -4px 0; /* 让滑块垂直居中跨越轨道 */
-    border-radius: 6px; /* 变成圆形 */
-}
-/* 滑块悬浮态：稍微变大或加深阴影 */
-QSlider::handle:horizontal:hover {
+    /* Set dimensions and margin exactly as before to ensure alignment */
     width: 14px;
     height: 14px;
-    margin: -5px 0;
     border-radius: 7px;
-}</string>
+    margin: -5px 0;
+
+    /* Make the handle invisible by default */
+    background: transparent;
+    border: none; /* No border requested */
+}
+
+/* 5. Show handle on Hover and Press */
+QSlider::handle:horizontal:hover,
+QSlider::handle:horizontal:pressed {
+    /* Make the handle visible (white) when interacting */
+    background: #ffffff;
+    /* Ensure no border is added here */
+    border: none;
+}
+</string>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
