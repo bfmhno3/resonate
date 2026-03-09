@@ -9,6 +9,11 @@
 #include <QWidget>
 #include <QWindow>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#include <windowsx.h>
+#endif
+
 #include "ui_main_window.h"
 
 namespace res {
@@ -91,6 +96,71 @@ void MainWindow::changeEvent(QEvent *event) {
   }
 
   QWidget::changeEvent(event);
+}
+
+bool MainWindow::nativeEvent(const QByteArray &event_type, void *message, long *result) {
+#ifdef Q_OS_WIN
+  if (event_type == "windows_generic_MSG") {
+    MSG *msg = static_cast<MSG *>(message);
+    if (msg->message == WM_NCHITTEST) {
+      // 获取鼠标坐标
+      int x = GET_X_LPARAM(msg->lParam);
+      int y = GET_Y_LPARAM(msg->lParam);
+      QPoint pt = mapFromGlobal(QPoint(x, y));
+
+      // 定义边距距离
+      constexpr int border_width = 5;
+
+      // 水平测试
+      bool left = pt.x() < border_width;
+      bool right = pt.x() >= width() - border_width;
+
+      // 垂直测试
+      bool top = pt.y() < border_width;
+      bool bottom = pt.y() >= height() - border_width;
+
+      if (top && left) {
+        *result = HTTOPLEFT;
+        return true;
+      }
+      if (top && right) {
+        *result = HTTOPRIGHT;
+        return true;
+      }
+      if (bottom && left) {
+        *result = HTBOTTOMLEFT;
+        return true;
+      }
+      if (bottom && right) {
+        *result = HTBOTTOMRIGHT;
+        return true;
+      }
+      if (left) {
+        *result = HTLEFT;
+        return true;
+      }
+      if (right) {
+        *result = HTRIGHT;
+        return true;
+      }
+      if (top) {
+        *result = HTTOP;
+        return true;
+      }
+      if (bottom) {
+        *result = HTBOTTOM;
+        return true;
+      }
+
+      // If we are not on a border, we might want to return HTCAPTION to allow dragging
+      // via the title bar area, or HTCLIENT for the rest.
+      // Since you handle dragging via mousePressEvent separately, you can just fall through
+      // or return HTCLIENT here. However, returning HTCAPTION here for the title bar area
+      // is often smoother than manual startSystemMove calls.
+    }
+  }
+#endif
+  return QWidget::nativeEvent(event_type, message, result);
 }
 
 }  // namespace res

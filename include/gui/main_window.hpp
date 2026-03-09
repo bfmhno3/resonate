@@ -26,6 +26,7 @@ class MainWindow : public QWidget {
   void mousePressEvent(QMouseEvent* event) override;
   void mouseMoveEvent(QMouseEvent* event) override;
   void changeEvent(QEvent* event) override;
+  bool nativeEvent(const QByteArray &event_type, void *message, long *result) override;
 
  private:
   Ui::MainWindow* ui;
