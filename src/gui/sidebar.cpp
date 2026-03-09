@@ -14,6 +14,10 @@ Sidebar::Sidebar(QWidget *parent) : QWidget(parent), ui(new Ui::Sidebar) {
   connect(ui->btn_min, &QPushButton::clicked, this, &Sidebar::handle_minimize);
   connect(ui->btn_max, &QPushButton::clicked, this, &Sidebar::handle_maximize);
 
+  connect(ui->list_navigation, &QListWidget::currentRowChanged, [this](int index) {
+    emit page_changed(index);
+  });
+
   QStringList nav_items = {"Recommend", "Likes", "Recent", "Local"};
 
   for (int i = 0; i < nav_items.size(); ++i) {

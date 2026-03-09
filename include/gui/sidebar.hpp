@@ -21,6 +21,7 @@ class Sidebar : public QWidget {
   void minimize_requested();
   void maximize_requested();
   void close_requested();
+  void page_changed(int index);
 
  private slots:
   void handle_minimize();

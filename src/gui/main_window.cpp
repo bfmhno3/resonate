@@ -36,6 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
           &MainWindow::showMinimized);
   connect(ui->sidebar, &res::Sidebar::maximize_requested, this,
           [this]() { isMaximized() ? showNormal() : showMaximized(); });
+
+  connect(ui->sidebar, &res::Sidebar::page_changed, ui->main_content,
+          &res::MainContent::set_current_page);
 }
 
 MainWindow::~MainWindow() { delete ui; }

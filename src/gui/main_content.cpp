@@ -9,4 +9,9 @@ MainContent::MainContent(QWidget *parent)
 }
 
 MainContent::~MainContent() { delete ui; }
+
+void MainContent::set_current_page(int index) {
+  ui->stacked_widget_main->setCurrentIndex(index);
+}
+
 }  // namespace res

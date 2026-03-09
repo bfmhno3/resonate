@@ -17,6 +17,9 @@ class MainContent : public QWidget {
   explicit MainContent(QWidget *parent = nullptr);
   ~MainContent() override;
 
+ public slots:
+  void set_current_page(int index);
+
  private:
   Ui::MainContent *ui;
 };
