@@ -15,6 +15,7 @@ find_package(Qt5 REQUIRED COMPONENTS
     Core
     Gui
     Widgets
+    Svg
     Multimedia
     Network
     Sql
@@ -43,6 +44,7 @@ add_executable(${CMAKE_PROJECT_NAME}
     ui/sidebar_item.ui
     include/gui/clickable_slider.hpp
     src/gui/clickable_slider.cpp
+    resources/resources.qrc
 )
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:GNU>:
@@ -59,6 +61,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
+    Qt5::Svg
     Qt5::Multimedia
     Qt5::Network
     Qt5::Sql
