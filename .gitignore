@@ -145,3 +145,5 @@ http-client.private.env.json
 build/
 .idea/
 CMakeUserPresets.json
+
+.claude/
