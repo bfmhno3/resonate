@@ -1,0 +1,45 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <!-- Prefix acts as a virtual root folder -->
+    <qresource prefix="/assets">
+        <!-- Icons: Sidebar -->
+        <file alias="icons/sidebar/likes.svg">icons/sidebar/likes.svg</file>
+        <file alias="icons/sidebar/local.svg">icons/sidebar/local.svg</file>
+        <file alias="icons/sidebar/list.svg">icons/sidebar/list.svg</file>
+        <file alias="icons/sidebar/plus.svg">icons/sidebar/plus.svg</file>
+        <file alias="icons/sidebar/recent.svg">icons/sidebar/recent.svg</file>
+        <file alias="icons/sidebar/recommend.svg">icons/sidebar/recommend.svg</file>
+
+        <!-- Icons: Player -->
+        <file alias="icons/player/desktop_lyric.svg">icons/player/desktop_lyric.svg</file>
+        <file alias="icons/player/device.svg">icons/player/device.svg</file>
+        <file alias="icons/player/like.svg">icons/player/like.svg</file>
+        <file alias="icons/player/like_fill.svg">icons/player/like_fill.svg</file>
+        <file alias="icons/player/next.svg">icons/player/next.svg</file>
+        <file alias="icons/player/pause.svg">icons/player/pause.svg</file>
+        <file alias="icons/player/play.svg">icons/player/play.svg</file>
+        <file alias="icons/player/playlist.svg">icons/player/playlist.svg</file>
+        <file alias="icons/player/previous.svg">icons/player/previous.svg</file>
+        <file alias="icons/player/repeat.svg">icons/player/repeat.svg</file>
+        <file alias="icons/player/repeat_one.svg">icons/player/repeat_one.svg</file>
+        <file alias="icons/player/shuffle.svg">icons/player/shuffle.svg</file>
+        <file alias="icons/player/volume_high.svg">icons/player/volume_high.svg</file>
+        <file alias="icons/player/volume_low.svg">icons/player/volume_low.svg</file>
+        <file alias="icons/player/volume_mute.svg">icons/player/volume_mute.svg</file>
+
+        <!-- Icons: Header -->
+        <file alias="icons/header/back.svg">icons/header/back.svg</file>
+        <file alias="icons/header/forward.svg">icons/header/forward.svg</file>
+        <file alias="icons/header/refresh.svg">icons/header/refresh.svg</file>
+        <file alias="icons/header/search.svg">icons/header/search.svg</file>
+        <file alias="icons/header/settings.svg">icons/header/settings.svg</file>
+        <file alias="icons/header/User.svg">icons/header/User.svg</file>
+
+        <!-- Icons: logo -->
+        <file alias="icons/logo.svg">icons/logo.svg</file>
+
+        <!-- Styles -->
+        <file alias="styles/default.qss">styles/default.qss</file>
+
+    </qresource>
+</RCC>

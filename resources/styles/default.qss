@@ -1,0 +1,358 @@
+/*
+ * Resonate - Centralized QSS Stylesheet
+ * All inline styles from UI files are consolidated here.
+ */
+
+/* === Global === */
+QWidget {
+    font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+
+/* === MainWindow === */
+QWidget#content {
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* === Sidebar === */
+Sidebar {
+    background-color: #EAEAEA;
+}
+
+/* macOS-style window controls */
+QPushButton#btn_close {
+    background-color: #FF5F56;
+    border-radius: 6px;
+}
+QPushButton#btn_close:hover {
+    background-color: #E0443E;
+}
+
+QPushButton#btn_min {
+    background-color: #FFBD2E;
+    border-radius: 6px;
+}
+QPushButton#btn_min:hover {
+    background-color: #DFAB1F;
+}
+
+QPushButton#btn_max {
+    background-color: #27C93F;
+    border-radius: 6px;
+}
+QPushButton#btn_max:hover {
+    background-color: #1AAB29;
+}
+
+/* Sidebar logo placeholder */
+Sidebar QLabel#label_logo {
+    background-color: #F5F5F7;
+}
+
+/* Navigation list */
+Sidebar QListWidget#list_navigation {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+Sidebar QListWidget#list_navigation::item {
+    border-radius: 8px;
+    margin-bottom: 4px;
+    padding: 0px;
+    border: none;
+}
+
+Sidebar QListWidget#list_navigation::item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+Sidebar QListWidget#list_navigation::item:selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Playlist header */
+Sidebar QLabel#label_playlist {
+    font-weight: bold;
+    color: #333333;
+}
+
+/* Playlist add button */
+Sidebar QPushButton#btm_playlist_add {
+    background-color: transparent;
+    border: none;
+}
+
+/* Playlist list */
+Sidebar QListWidget#list_playlists {
+    background-color: transparent;
+    outline: none;
+}
+
+Sidebar QListWidget#list_playlists::item {
+    height: 36px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    color: #333333;
+    padding-left: 10px;
+}
+
+Sidebar QListWidget#list_playlists::item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+Sidebar QListWidget#list_playlists::item:selected {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000000;
+    font-weight: bold;
+}
+
+/* === SidebarItem === */
+SidebarItem QLabel#label_icon {
+    background-color: transparent;
+}
+
+/* === Header === */
+Header {
+    background-color: #F5F5F7;
+}
+
+/* Header icon buttons (back, forward, refresh, settings) */
+Header QPushButton#btn_back,
+Header QPushButton#btn_forward,
+Header QPushButton#btn_refresh,
+Header QPushButton#btn_settings {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+}
+
+Header QPushButton#btn_back:hover,
+Header QPushButton#btn_forward:hover,
+Header QPushButton#btn_refresh:hover,
+Header QPushButton#btn_settings:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+Header QPushButton#btn_back:pressed,
+Header QPushButton#btn_forward:pressed,
+Header QPushButton#btn_refresh:pressed,
+Header QPushButton#btn_settings:pressed {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Search bar */
+Header QLineEdit#line_edit_search {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 14px;
+    padding-left: 15px;
+}
+
+Header QLineEdit#line_edit_search:focus {
+    background-color: #FFFFFF;
+    border: 1px solid #D1D1D6;
+}
+
+/* Avatar placeholder */
+Header QLabel#label_avatar {
+    background-color: #D1D1D6;
+    border-radius: 18px;
+}
+
+/* Username */
+Header QLabel#label_username {
+    font-weight: bold;
+    color: #333333;
+}
+
+/* === Player Bar === */
+PlayerBar {
+    background-color: #F9F9F9;
+    border-top: 1px solid #E5E5E5;
+}
+
+/* Cover art placeholder */
+PlayerBar QLabel#label_cover {
+    background-color: #D1D1D6;
+    border-radius: 30px;
+}
+
+/* Song info */
+PlayerBar QLabel#label_song_name {
+    background-color: transparent;
+    color: #333333;
+    font-weight: bold;
+}
+
+/* Player control buttons (small: 30x30) */
+PlayerBar QPushButton#btn_play_mode,
+PlayerBar QPushButton#btn_prev,
+PlayerBar QPushButton#btn_next,
+PlayerBar QPushButton#btn_volume,
+PlayerBar QPushButton#btn_device,
+PlayerBar QPushButton#btn_desktop_lyric,
+PlayerBar QPushButton#btn_playlist {
+    background-color: transparent;
+    border: none;
+    border-radius: 15px;
+}
+
+PlayerBar QPushButton#btn_play_mode:hover,
+PlayerBar QPushButton#btn_prev:hover,
+PlayerBar QPushButton#btn_next:hover,
+PlayerBar QPushButton#btn_volume:hover,
+PlayerBar QPushButton#btn_device:hover,
+PlayerBar QPushButton#btn_desktop_lyric:hover,
+PlayerBar QPushButton#btn_playlist:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+PlayerBar QPushButton#btn_play_mode:pressed,
+PlayerBar QPushButton#btn_prev:pressed,
+PlayerBar QPushButton#btn_next:pressed,
+PlayerBar QPushButton#btn_volume:pressed,
+PlayerBar QPushButton#btn_device:pressed,
+PlayerBar QPushButton#btn_desktop_lyric:pressed,
+PlayerBar QPushButton#btn_playlist:pressed {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Play/pause button (large: 40x40) */
+PlayerBar QPushButton#btn_play_pause {
+    background-color: transparent;
+    border: none;
+    border-radius: 20px;
+}
+
+PlayerBar QPushButton#btn_play_pause:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+PlayerBar QPushButton#btn_play_pause:pressed {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Like button */
+PlayerBar QPushButton#btn_like {
+    background-color: transparent;
+    border: none;
+    border-radius: 12px;
+}
+
+PlayerBar QPushButton#btn_like:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Progress/Volume slider */
+res--ClickableSlider,
+ClickableSlider {
+    outline: none;
+}
+
+res--ClickableSlider::groove:horizontal,
+ClickableSlider::groove:horizontal {
+    border: none;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+}
+
+res--ClickableSlider::sub-page:horizontal,
+ClickableSlider::sub-page:horizontal {
+    background: #1DB954;
+    border-radius: 2px;
+}
+
+res--ClickableSlider::handle:horizontal,
+ClickableSlider::handle:horizontal {
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    margin: -5px 0;
+    background: transparent;
+    border: none;
+}
+
+res--ClickableSlider::handle:horizontal:hover,
+res--ClickableSlider::handle:horizontal:pressed,
+ClickableSlider::handle:horizontal:hover,
+ClickableSlider::handle:horizontal:pressed {
+    background: #ffffff;
+    border: none;
+}
+
+/* === Main Content === */
+MainContent {
+    background-color: #FFFFFF;
+}
+
+QWidget#MainContentWidget {
+    background-color: #FFFFFF;
+    border-top-left-radius: 10px;
+}
+
+/* Right container (header + content + player bar) */
+QWidget#right_container {
+    background-color: #FFFFFF;
+}
+
+/* === Scrollbar (global) === */
+QScrollBar:vertical {
+    border: none;
+    background: transparent;
+    width: 10px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: rgba(0, 0, 0, 0.15);
+    min-height: 30px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* Horizontal scrollbar */
+QScrollBar:horizontal {
+    border: none;
+    background: transparent;
+    height: 10px;
+    margin: 0;
+}
+
+QScrollBar::handle:horizontal {
+    background: rgba(0, 0, 0, 0.15);
+    min-width: 30px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background: none;
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
