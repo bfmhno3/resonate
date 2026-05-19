@@ -2,6 +2,7 @@
 
 #include <QApplication>
 #include <QGuiApplication>
+#include <QFile>
 
 #include "gui/main_window.hpp"
 #include "utils/logger.hpp"
@@ -16,6 +17,12 @@ int main(int argc, char* argv[]) {
 
   // 绑定日志处理函数，确保所有 Qt 输出都能被 Logger 捕获
   qInstallMessageHandler(res::Logger::messageHandler);
+
+  QFile style_file(":/assets/styles/default.qss");
+  if (style_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    app.setStyleSheet(style_file.readAll());
+    style_file.close();
+  }
 
   res::MainWindow window;
   window.show();
